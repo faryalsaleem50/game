@@ -220,3 +220,75 @@
   </script>
 </body>
 </html>
+
+                            LUDO DICE   
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Roll Dice</title>
+  <style>
+    .dice {
+      width: 100px;
+      height: 100px;
+      margin-top: 20px;
+      border: 4px solid #000;
+      border-radius: 15px;
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      grid-template-rows: repeat(3, 1fr);
+      gap: 5px;
+      padding: 10px;
+    }
+    .dot {
+      width: 20px;
+      height: 20px;
+      background-color: black;
+      border-radius: 50%;
+      justify-self: center;
+      align-self: center;
+    }
+    button {
+      padding: 10px 20px;
+      font-size: 18px;
+      margin-top: 20px;
+    }
+  </style>
+</head>
+<body>
+
+<h2>🎲 Roll the Dice</h2>
+<button onclick="rollDice()">Roll Dice</button>
+
+<div id="dice" class="dice"></div>
+
+<script>
+  function rollDice() {
+    const diceContainer = document.getElementById("dice");
+    diceContainer.innerHTML = "";
+
+    const number = Math.floor(Math.random() * 6) + 1;
+
+    const dotMap = {
+      1: [4],
+      2: [0, 8],
+      3: [0, 4, 8],
+      4: [0, 2, 6, 8],
+      5: [0, 2, 4, 6, 8],
+      6: [0, 2, 3, 5, 6, 8]
+    };
+
+    for (let i = 0; i < 9; i++) {
+      const cell = document.createElement("div");
+      if (dotMap[number].includes(i)) {
+        cell.className = "dot";
+      }
+      diceContainer.appendChild(cell);
+    }
+
+    alert("You rolled a " + number + "!");
+  }
+</script>
+
+</body>
+</html>
+
